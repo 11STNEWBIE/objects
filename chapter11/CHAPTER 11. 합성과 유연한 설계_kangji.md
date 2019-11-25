@@ -18,21 +18,23 @@
 
 예. `Vector`를 상속받는 `Stack`을 합성 관계로 변경하면 아래와 같다
 
-    public class Stack<E> {
-    	private Vector<E> elements = new Vecotr<>();
-    
-    	public E push(E item) {
-    		elements.addElement(item);
-    		return item;
-    	}
-    
-    	public E pop() {
-    		if (elements.isEmpty()) {
-    			throw new EmpthStackException();
-    		}
-    		return elements.remove(elements.size() - 1);
-    	}
+``` java
+public class Stack<E> {
+    private Vector<E> elements = new Vecotr<>();
+
+    public E push(E item) {
+        elements.addElement(item);
+        return item;
     }
+
+    public E pop() {
+        if (elements.isEmpty()) {
+            throw new EmpthStackException();
+        }
+        return elements.remove(elements.size() - 1);
+    }
+}
+```
 
 기존의 상속 관계에서 발생하던 문제(임의의 위치에 요소를 추가하거나 삭제가 가능하다는, `Stack`의 규칙에서 벗어나는 상황) 가 발생하지 않음.즉 합성 관계로 변경함으로써 클라이언트가 `Stack`을 잘못 사용할 수도 있다느 가능성을 깔끔하게 제거한 것.
 
